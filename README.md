@@ -41,6 +41,12 @@ npm run preview  # serve the built site at /marketing/
 
 One-time setup: **Settings → Pages → Build and deployment → Source: GitHub Actions.**
 
+This setting is required, and the workflow cannot set it for you — the default
+`GITHUB_TOKEN` isn't allowed to create a Pages site. If the source is left on
+**Deploy from a branch**, GitHub ignores this workflow's build and serves the
+repo root as-is. The root `index.html` points at `/src/main.jsx` (raw JSX, which
+no browser can execute), so the published page comes up blank.
+
 ## Layout
 
 | Path | What it is |
